@@ -1,0 +1,145 @@
+:root {
+  --text_color: var(--theme-color);
+  --docsify_dark_mode_bg: white;
+  --docsify_dark_mode_btn: var(--theme-color);
+}
+html,
+body,
+main,
+.sidebar-toggle,
+.sidebar,
+nav,
+aside {
+  background: var(--docsify_dark_mode_bg);
+}
+
+/***********************/
+/******* 暗色主题 *******/
+/***********************/
+
+/* 字体颜色 */
+
+.dark body {
+  color: #ccc;
+}
+
+.dark strong {
+  color: #ddd;
+}
+
+.dark .sidebar {
+  border-color: #202020;
+}
+
+.dark .markdown-section h1 span,
+.dark h2,
+.dark .sidebar li,
+.dark .sidebar a {
+  color: #fff;
+}
+
+.dark .markdown-section h2 span {
+  color: #ddd;
+}
+
+.dark h3 span {
+  color: #ccc;
+}
+
+.dark h4 span,
+.dark h5 span,
+.dark li,
+.dark p {
+  color: #bbb;
+}
+
+.dark article.markdown-section a {
+  color: #ddd;
+}
+
+/* 图标 */
+
+.dark Icon {
+  transform: translateY(-30px);
+  filter: drop-shadow(#fff 0 30px);
+}
+
+.dark p {
+  overflow: hidden;
+}
+
+/* 代码块背景色 */
+.dark pre,
+.dark code {
+  /* background-color: #0e0e0e; */
+  background-color: #111;
+}
+
+/* docsify 拓展语法样式 */
+.dark article.markdown-section p.warn,
+.dark article.markdown-section p.tip {
+  background-color: #111;
+}
+
+/***********************/
+/******* 按钮样式 *******/
+/***********************/
+
+#dark_mode > input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+#dark_mode > label {
+  cursor: pointer;
+  width: 19.2px;
+  height: 19.2px;
+  user-select: none;
+}
+
+#dark_mode > label {
+  content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiMyYmJjOGEiIGQ9Ik0xMiAxOGE2IDYgMCAxIDEgMC0xMmE2IDYgMCAwIDEgMCAxMlptMC0yYTQgNCAwIDEgMCAwLThhNCA0IDAgMCAwIDAgOFpNMTEgMWgydjNoLTJWMVptMCAxOWgydjNoLTJ2LTNaTTMuNTE1IDQuOTI5bDEuNDE0LTEuNDE0TDcuMDUgNS42MzZMNS42MzYgNy4wNUwzLjUxNSA0LjkzWk0xNi45NSAxOC4zNjRsMS40MTQtMS40MTRsMi4xMjEgMi4xMjFsLTEuNDE0IDEuNDE0bC0yLjEyMS0yLjEyMVptMi4xMjEtMTQuODVsMS40MTQgMS40MTVsLTIuMTIxIDIuMTIxbC0xLjQxNC0xLjQxNGwyLjEyMS0yLjEyMVpNNS42MzYgMTYuOTVsMS40MTQgMS40MTRsLTIuMTIxIDIuMTIxbC0xLjQxNC0xLjQxNGwyLjEyMS0yLjEyMVpNMjMgMTF2MmgtM3YtMmgzWk00IDExdjJIMXYtMmgzWiIvPjwvc3ZnPg==);
+}
+
+.dark #dark_mode > label {
+  content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0xMCA3YTcgNyAwIDAgMCAxMiA0Ljl2LjFjMCA1LjUyMy00LjQ3NyAxMC0xMCAxMFMyIDE3LjUyMyAyIDEyUzYuNDc3IDIgMTIgMmguMUE2Ljk4IDYuOTggMCAwIDAgMTAgN1ptLTYgNWE4IDggMCAwIDAgMTUuMDYyIDMuNzYyQTkgOSAwIDAgMSA4LjIzOCA0LjkzOEE3Ljk5OSA3Ljk5OSAwIDAgMCA0IDEyWiIvPjwvc3ZnPg==);
+}
+
+#dark_mode > input:checked + label {
+  content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiMyYmJjOGEiIGQ9Ik0xMiAxOGE2IDYgMCAxIDEgMC0xMmE2IDYgMCAwIDEgMCAxMlptMC0yYTQgNCAwIDEgMCAwLThhNCA0IDAgMCAwIDAgOFpNMTEgMWgydjNoLTJWMVptMCAxOWgydjNoLTJ2LTNaTTMuNTE1IDQuOTI5bDEuNDE0LTEuNDE0TDcuMDUgNS42MzZMNS42MzYgNy4wNUwzLjUxNSA0LjkzWk0xNi45NSAxOC4zNjRsMS40MTQtMS40MTRsMi4xMjEgMi4xMjFsLTEuNDE0IDEuNDE0bC0yLjEyMS0yLjEyMVptMi4xMjEtMTQuODVsMS40MTQgMS40MTVsLTIuMTIxIDIuMTIxbC0xLjQxNC0xLjQxNGwyLjEyMS0yLjEyMVpNNS42MzYgMTYuOTVsMS40MTQgMS40MTRsLTIuMTIxIDIuMTIxbC0xLjQxNC0xLjQxNGwyLjEyMS0yLjEyMVpNMjMgMTF2MmgtM3YtMmgzWk00IDExdjJIMXYtMmgzWiIvPjwvc3ZnPg==);
+}
+
+.dark #dark_mode > input:checked + label {
+  content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0xMCA3YTcgNyAwIDAgMCAxMiA0Ljl2LjFjMCA1LjUyMy00LjQ3NyAxMC0xMCAxMFMyIDE3LjUyMyAyIDEyUzYuNDc3IDIgMTIgMmguMUE2Ljk4IDYuOTggMCAwIDAgMTAgN1ptLTYgNWE4IDggMCAwIDAgMTUuMDYyIDMuNzYyQTkgOSAwIDAgMSA4LjIzOCA0LjkzOEE3Ljk5OSA3Ljk5OSAwIDAgMCA0IDEyWiIvPjwvc3ZnPg==);
+}
+
+#dark_mode {
+  font-size: 0;
+  margin: 0 1rem;
+}
+
+p {
+  color: var(--text_color);
+}
+
+/***********************/
+/******* 过渡动画 *******/
+/***********************/
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 9999;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}
+.dark::view-transition-old(root) {
+  z-index: 1;
+}
+.dark::view-transition-new(root) {
+  z-index: 9999;
+}

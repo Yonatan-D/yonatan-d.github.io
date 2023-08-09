@@ -1,0 +1,9 @@
+svg.markmap {
+  width: 100%;
+  height: calc(100vh - 350px);
+}
+
+/* custom 隐藏掉copy的按钮 */
+pre[data-lang=markmap]:hover .docsify-copy-code-button {
+  opacity: 0;
+}
