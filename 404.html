@@ -1,113 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Yonatan's Blog</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <!-- docsify theme -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <link rel="stylesheet" href="/themes/prism-vs.css">
-  <!-- font -->
-  <link href="https://fonts.cdnfonts.com/css/menlo" rel="stylesheet">
-  <!-- custom -->
-  <link rel="stylesheet" href="/themes/styles.css">
-  <link rel="stylesheet" href="/plugins/docsify-my-dark-mode/style.css">
-  <link rel="stylesheet" href="/plugins/docsify-my-markmap/style.css">
-</head>
-<body>
-  <div id="app"></div>
-  <script>
-    window.$docsify = {
-      name: 'Yonatan',
-      // repo:'https://github.com/yonatan-d',
-      nameLink: "/me",
-      // basePath: '/docs/',
-      basePath: 'https://raw.githubusercontent.com/yonatan-d/yonatan-d/main/blog/',
-      logo: '/logo.png',
-      homepage: 'posts.md',
-      themeColor: '#00b38a',
-      routerMode: 'history',
-      relativePath: true,
-      loadSidebar: true,
-      autoHeader: true,
-      // loadNavbar: true,
-      // mergeNavbar: true,
-      // auto2top: true,
-      // formatUpdated: '{YYYY}-{MM}-{DD}',
-      formatUpdated: function (time) {
-        return new Date(time).toLocaleDateString("en-US", {
-          day: 'numeric',
-          month: 'short',
-          year: 'numeric',
-        })
-      },
-      alias: {
-        '/.*/_navbar.md': '/_navbar.md',
-        '/posts/_sidebar.md': '/_sidebar.md',
-        '/notes/.*/_sidebar.md': '/notes/_sidebar.md',
-      },
-      customNavbar: {
-        list: [
-          { title: 'Blog', href: '/posts' },
-          { title: 'Note', href: '/notes/map' },
-          { title: 'Resume', href: '/resume' },
-          { icon: 'icon-github-line', href: 'http://github.com/yonatan-d', target: '_blank' },
-        ],
-      },
-      customFooter: {
-        beian: {
-          ICP: "",
-        },
-        createdAt: '2023',
-        author: 'Yonatan'
-      },
-      copyCode: {
-        buttonText : '<Icon class="icon-copy"></Icon>',
-        errorText  : 'Error',
-        successText: 'Copied'
-      },
-    }
-  </script>
-  <script>
-    /** 
-     * 屏蔽其他插件的控制台输出
-     * 
-     * TODO: 日志等级
-     * 0 false, 1 debug, 2 log, 3 info, 4 warn, 5 error 
-     */
-    const logLevel = 0
-    console.log = (function (oriLogFunc) {
-      return function () {
-        if (!logLevel) return;
-        oriLogFunc.apply(this, arguments)
-      }
-    })(console.log)
-  </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4.13"></script>
-  <!-- Docsify v4 Plugins -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4.13/lib/plugins/zoom-image.min.js"></script>
-  <!-- custom plugins -->
-  <script src="plugins/docsify-my-navbar/index.js"></script>
-  <script src="plugins/docsify-my-footer/index.js"></script>
-  <script src="plugins/docsify-my-dark-mode/index.js"></script>
-  <script src="plugins/docsify-my-markmap/index.js"></script>
-  <script src="plugins/docsify-my-updater/index.js"></script>
-  <!-- third-part plugins -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-terminal-block@1.0.3"></script>
-  <!-- prism https://cdn.jsdelivr.net/npm/prismjs@1/components/ -->
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-powershell.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-properties.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-ini.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-toml.min.js"></script>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Single Page Apps for GitHub Pages</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string and hash fragment,
+      // e.g. https://www.foo.tld/one/two?a=b&c=d#qwe, becomes
+      // https://www.foo.tld/?/one/two&a=b~and~c=d#qwe
+      // Note: this 404.html file must be at least 512 bytes for it to work
+      // with Internet Explorer (it is currently > 512 bytes)
+
+      // If you're creating a Project Pages site and NOT using a custom domain,
+      // then set pathSegmentsToKeep to 1 (enterprise users may need to set it to > 1).
+      // This way the code will only replace the route part of the path, and not
+      // the real directory in which the app resides, for example:
+      // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
+      // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
+      // Otherwise, leave pathSegmentsToKeep as 0.
+      var pathSegmentsToKeep = 0;
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
