@@ -10,7 +10,6 @@ function plugin(hook, vm) {
     let readTime = Math.ceil(wordsCount / 400) + " min read"
 
     // 使用 GitHub API 获取文件提交时间
-    let commitDate = '-'
     let isGithubFilePath = /raw.githubusercontent.com/g.test(vm.route.file)
     // +4 是跳过了匹配项, owner, repo, branch(sha)
     let pathIndex = vm.route.file.split('/').findIndex(a => a == 'raw.githubusercontent.com') + 4
@@ -18,14 +17,16 @@ function plugin(hook, vm) {
     let owner = vm.route.file.split('/')[pathIndex - 3]
     let repo = vm.route.file.split('/')[pathIndex - 2]
     let date_url = `https://api.github.com/repos/${owner}/${repo}/commits?per_page=1&path=${filePath}`
-    fetch(date_url)
+    let commitDate = (async () => {
+      await fetch(date_url)
       .then((response) => {
         return response.json()
       })
       .then((commits) => {
         let date = commits[0]['commit']['committer']['date'];
-        commitDate = window.$docsify.formatUpdated(date);
+        return window.$docsify.formatUpdated(date);
       })
+    })() || '-'
 
     // let text2 = `<p style="color:#808080;font-size:14px;">${author} · {docsify-updated} · ${wordsStr} · ${readTime}</p>`
     let text2 = `<p style="color:#808080;font-size:14px;">${author} · ${commitDate} · ${readTime}</p>`
