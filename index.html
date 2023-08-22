@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <link rel="stylesheet" href="/themes/prism-vs.css">
   <!-- font -->
-  <link href="https://fonts.cdnfonts.com/css/menlo" rel="stylesheet">
+  <link href="/themes/fonts/menlo.css" rel="stylesheet">
   <!-- custom -->
   <link rel="stylesheet" href="/themes/styles.css">
   <link rel="stylesheet" href="/plugins/docsify-my-dark-mode/style.css">
@@ -34,6 +34,7 @@
         var decoded = l.search.slice(1).split('&').map(function(s) { 
           return s.replace(/~and~/g, '&')
         }).join('?');
+        debugger
         window.history.replaceState(null, null,
             l.pathname.slice(0, -1) + decoded + l.hash
         );
@@ -41,7 +42,7 @@
     }(window.location))
   </script>
   <!-- End Single Page Apps for GitHub Pages -->
-  
+
 </head>
 <body>
   <div id="app"></div>
