@@ -12,7 +12,7 @@ function plugin(hook, vm) {
     // 使用 GitHub API 获取文件提交时间
     let commitDate = '-'
     try {
-      let isGithubFilePath = /raw.githubusercontent.com/g.test(vm.config.file)
+      let isGithubFilePath = /raw.githubusercontent.com/g.test(vm.route.file)
       // +4 是跳过了匹配项, owner, repo, branch(sha)
       let pathIndex = vm.route.file.split('/').findIndex(a => a == 'raw.githubusercontent.com') + 4
       let filePath = isGithubFilePath ? vm.route.file.split('/').slice(pathIndex).join('/') : vm.route.file
