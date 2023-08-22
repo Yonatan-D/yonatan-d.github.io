@@ -13,8 +13,8 @@ function plugin(hook, vm) {
     let isGithubBasePath = /raw.githubusercontent.com/g.test(vm.config.basePath)
     // +4 是跳过了匹配项, owner, repo, branch(sha)
     let pathIndex = vm.config.basePath.split('/').findIndex(a => a == 'raw.githubusercontent.com') + 4
-    let basePath = isGithubBasePath ? vm.config.basePath.split('/').slice(pathIndex).join('/') : vm.config.basePath
-    let date_url = 'https://api.github.com/repos/docsifyjs/docsify/commits?per_page=1&path=' + basePath + vm.route.file
+    let filePath = isGithubBasePath ? vm.route.file.split('/').slice(pathIndex).join('/') : vm.route.file
+    let date_url = 'https://api.github.com/repos/docsifyjs/docsify/commits?per_page=1&path=' + filePath
     let response = await fetch(date_url)
     let commits = await response.json()
     let date = commits[0]['commit']['committer']['date'];
