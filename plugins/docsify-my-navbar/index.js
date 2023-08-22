@@ -13,60 +13,31 @@ var plugin = (hook, vm) => {
   customNavbar = { ...defaultConfig, ...vm.config.customNavbar };
 
   hook.mounted(_ => {
-    // const navList = customNavbar.list;
+    const navList = customNavbar.list;
 
-    // var navEl = navList.map(li => {
-    //   let defaultLi = { title: '', icon: '', href: '', target: '_self' };
-    //   li = { ...defaultLi, ...li };
+    var navEl = navList.map(li => {
+      let defaultLi = { title: '', icon: '', href: '', target: '_self' };
+      li = { ...defaultLi, ...li };
 
-    //   return `<li><a href=${li.href} target=${li.target}>
-    //                 ${li.icon ? '<Icon class='+ li.icon +'></Icon>' : ''}
-    //                 ${li.title}
-    //               </a>
-    //           </li>`;
-    // }).join('');
-    // var html = ` <ul>${navEl}</ul>`;
+      return `<li><a href=${li.href} target=${li.target}>
+                    ${li.icon ? '<Icon class='+ li.icon +'></Icon>' : ''}
+                    ${li.title}
+                  </a>
+              </li>`;
+    }).join('');
+    var html = ` <ul>${navEl}</ul>`;
 
-    // const el = Docsify.dom.create('nav', html);
-    // Docsify.dom.toggleClass(el, 'app-nav');
-    
-    // if (!vm.config.repo) {
-    //   Docsify.dom.toggleClass(el, 'no-badge');
-    // }
+    const el = Docsify.dom.create('nav', html);
+    Docsify.dom.toggleClass(el, 'app-nav');
+    const section = Docsify.dom.find('section');
+    Docsify.dom.before(section, el);
 
-    // const section = Docsify.dom.find('section');
-    // Docsify.dom.before(section, el);
+    if (!vm.config.repo) {
+      Docsify.dom.toggleClass(el, 'no-badge');
+    }
   });
 
   hook.doneEach(_ => {
-
-    const nav = Docsify.dom.find('app-nav');
-    if (!nav) {
-      const navList = customNavbar.list;
-
-      var navEl = navList.map(li => {
-        let defaultLi = { title: '', icon: '', href: '', target: '_self' };
-        li = { ...defaultLi, ...li };
-  
-        return `<li><a href=${li.href} target=${li.target}>
-                      ${li.icon ? '<Icon class='+ li.icon +'></Icon>' : ''}
-                      ${li.title}
-                    </a>
-                </li>`;
-      }).join('');
-      var html = ` <ul>${navEl}</ul>`;
-  
-      const el = Docsify.dom.create('nav', html);
-      Docsify.dom.toggleClass(el, 'app-nav');
-
-      const section = Docsify.dom.find('section');
-      Docsify.dom.before(section, el);
-
-      if (!vm.config.repo) {
-        Docsify.dom.toggleClass(el, 'no-badge');
-      }
-    }
-
 
     // 每次打开都 auto2top
     Docsify.dom.find('.content').scrollTo(0, 0);
