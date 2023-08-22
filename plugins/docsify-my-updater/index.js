@@ -1,6 +1,6 @@
 function plugin(hook, vm) {
 
-  hook.beforeEach(function (content) {
+  hook.beforeEach(async function (content) {
 
     let author = vm.config.name
 
@@ -9,8 +9,19 @@ function plugin(hook, vm) {
     // let wordsStr = wordsCount + " words"
     let readTime = Math.ceil(wordsCount / 400) + " min read"
 
+    // 使用 GitHub API 获取文件提交时间
+    let isGithubBasePath = /raw.githubusercontent.com/g.test(vm.config.basePath)
+    // +4 是跳过了匹配项, owner, repo, branch(sha)
+    let pathIndex = vm.config.basePath.split('/').findIndex(a => a == 'raw.githubusercontent.com') + 4
+    let basePath = isGithubBasePath ? vm.config.basePath.split('/').slice(pathIndex).join('/') : vm.config.basePath
+    let date_url = 'https://api.github.com/repos/docsifyjs/docsify/commits?per_page=1&path=' + basePath + vm.route.file
+    let response = await fetch(date_url)
+    let commits = await response.json()
+    let date = commits[0]['commit']['committer']['date'];
+    let commitDate = window.$docsify.formatUpdated(date);
+
     // let text2 = `<p style="color:#808080;font-size:14px;">${author} · {docsify-updated} · ${wordsStr} · ${readTime}</p>`
-    let text2 = `<p style="color:#808080;font-size:14px;">${author} · {docsify-updated} · ${readTime}</p>`
+    let text2 = `<p style="color:#808080;font-size:14px;">${author} · ${commitDate} · ${readTime}</p>`
 
     let copyright = `\n<p style="color:#808080;font-size:14px;margin-top:40px;">本文作者为 <a href="https://yonatan.cn">Yonatan</a>，转载请注明出处：${window.location.href}</p>`
     let isMatched = /{docsify-my-updater}/g.test(content);
