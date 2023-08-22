@@ -28,7 +28,7 @@ function plugin(hook, vm) {
           .then((commits) => {
             let date = commits[0]['commit']['committer']['date'];
             let commitDate = window.$docsify.formatUpdated(date);
-            let text = `<p style="color:#808080;font-size:14px;">${author} · ${commitDate} · ${readTime}</p>`
+            let text = `${author} · ${commitDate} · ${readTime}`
             document.getElementById('last-modified').textContent = text
           })
       } else {
@@ -37,7 +37,7 @@ function plugin(hook, vm) {
         document.getElementById('last-modified').textContent = text
       }
 
-      return content.replace(/{docsify-my-updater}/g, '<span id="last-modified"></span>') + copyright
+      return content.replace(/{docsify-my-updater}/g, '<p id="last-modified" style="color:#808080;font-size:14px;"></p>') + copyright
     }
   })
 
