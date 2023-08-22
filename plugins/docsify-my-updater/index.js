@@ -17,7 +17,7 @@ function plugin(hook, vm) {
       let pathIndex = vm.route.file.split('/').findIndex(a => a == 'raw.githubusercontent.com') + 4
       let filePath = isGithubFilePath ? vm.route.file.split('/').slice(pathIndex).join('/') : vm.route.file
       let owner = vm.route.file.split('/')[pathIndex - 3]
-      let repo = vm.route.file[pathIndex - 2]
+      let repo = vm.route.file.split('/')[pathIndex - 2]
       let date_url = `https://api.github.com/repos/${owner}/${repo}/commits?per_page=1&path=${filePath}`
       let response = await fetch(date_url)
       let commits = await response.json()
