@@ -34,7 +34,7 @@ function plugin(hook, vm) {
       } else {
         // let text = `<p style="color:#808080;font-size:14px;">${author} · {docsify-updated} · ${wordsStr} · ${readTime}</p>`
         let text = `<p style="color:#808080;font-size:14px;">${author} · {docsify-updated} · ${readTime}</p>`
-        document.getElementById('last-modified').textContent = text
+        return content.replace(/{docsify-my-updater}/g, text) + copyright
       }
 
       return content.replace(/{docsify-my-updater}/g, '<p id="last-modified" style="color:#808080;font-size:14px;"></p>') + copyright
