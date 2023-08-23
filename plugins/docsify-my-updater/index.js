@@ -6,6 +6,23 @@ function plugin(hook, vm) {
     if (isMatched) {
       let author = vm.config.name
       let copyright = `\n<p style="color:#808080;font-size:14px;margin-top:40px;">本文作者为 <a href="https://yonatan.cn">Yonatan</a>，转载请注明出处：${window.location.href}</p>`
+      let gitcus = `
+        <giscus-widget
+          id="comments"
+          repo="yonatan-d/yonatan-d"
+          repoid="R_kgDOJ0TPCg"
+          category="General"
+          categoryid="DIC_kwDOJ0TPCs4CXs2G"
+          mapping="specific"
+          term="Welcome to giscus!"
+          reactionsenabled="1"
+          emitmetadata="0"
+          inputposition="top"
+          theme="light"
+          lang="en"
+          loading="lazy"
+        ></giscus-widget>
+      `
 
       // Match regex every time you start parsing .md
       let wordsCount = content.match(/([\u4e00-\u9fa5]+?|[a-zA-Z0-9]+)/g).length
@@ -34,10 +51,10 @@ function plugin(hook, vm) {
       } else {
         // let text = `<p style="color:#808080;font-size:14px;">${author} · {docsify-updated} · ${wordsStr} · ${readTime}</p>`
         let text = `<p style="color:#808080;font-size:14px;">${author} · {docsify-updated} · ${readTime}</p>`
-        return content.replace(/{docsify-my-updater}/g, text) + copyright
+        return content.replace(/{docsify-my-updater}/g, text) + copyright + gitcus
       }
 
-      return content.replace(/{docsify-my-updater}/g, '<p id="last-modified" style="color:#808080;font-size:14px;"></p>') + copyright
+      return content.replace(/{docsify-my-updater}/g, '<p id="last-modified" style="color:#808080;font-size:14px;"></p>') + copyright + gitcus
     }
   })
 
