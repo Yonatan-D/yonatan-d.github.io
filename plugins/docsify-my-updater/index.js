@@ -10,17 +10,14 @@ function plugin(hook, vm) {
         <giscus-widget
           id="comments"
           repo="yonatan-d/yonatan-d"
-          repoid="R_kgDOJ0TPCg"
-          category="General"
-          categoryid="DIC_kwDOJ0TPCs4CXs2G"
-          mapping="specific"
-          term="Welcome to giscus!"
-          reactionsenabled="1"
-          emitmetadata="0"
+          repo-id="R_kgDOJ0TPCg"
+          category="Comment"
+          category-id="DIC_kwDOJ0TPCs4CXs2G"
+          mapping="pathname"
+          strict="0"
           inputposition="top"
           theme="light"
-          lang="en"
-          loading="lazy"
+          lang="zh-CN"
         ></giscus-widget>
       `
 
