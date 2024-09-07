@@ -59,6 +59,10 @@ aside {
   color: #ddd;
 }
 
+.dark article.markdown-section p {
+  color: #ddd;
+}
+
 /* 图标 */
 
 .dark Icon {
