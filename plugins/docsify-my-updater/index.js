@@ -5,7 +5,7 @@ function plugin(hook, vm) {
     let isMatched = /{docsify-my-updater}/g.test(content);
     if (isMatched) {
       let author = vm.config.name
-      let copyright = `\n<p style="color:#808080;font-size:14px;margin-top:40px;">本文作者为 <a href="https://yonatan.cn">Yonatan</a>，转载请注明出处</p>`
+      let copyright = `\n<p style="color:#808080;font-size:14px;margin-top:40px;">本文作者为 <a style="display:inline;" href="https://yonatan.cn">Yonatan</a>，转载请注明出处</p>`
       let gitcus = `
         <giscus-widget
           id="comments"

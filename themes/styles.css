@@ -79,7 +79,7 @@ nav.app-nav {
   top: 0;
   right: 0;
   width: 100%;
-  height: 80px;
+  height: 78px;
 }
 
 nav.app-nav ul {
@@ -254,11 +254,11 @@ article.markdown-section ul {
 
 article.markdown-section ul {
   list-style: none;
-  color: #4f4f4f;
+  color: #666;
 }
 
 article.markdown-section p {
-  color: #4f4f4f;
+  color: #666;
 }
 
 article.markdown-section li a {
