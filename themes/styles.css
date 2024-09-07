@@ -252,7 +252,7 @@ article.markdown-section ul {
   padding: 0;
 }
 
-article.markdown-section li {
+article.markdown-section ul {
   list-style: none;
   color: #4f4f4f;
 }
