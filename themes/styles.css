@@ -204,6 +204,10 @@ body.close .sidebar-toggle {
     left: 300px;
     transition: .3s;
   }
+
+  article.markdown-section a {
+      display: block;
+  }
 }
 
 /***************************************************/
@@ -221,19 +225,49 @@ section.content {
 article.markdown-section {
   /* nav 60px + footer 60px + gap 5px */
   min-height: calc(100vh - 125px);
-  font-size: 16px;
+  font-size: 14px;
   max-width: 930px;
-  width: 90%;
+  width: 95%;
   letter-spacing: -.5px;
 }
 
-article.markdown-section a {
-  color: #252933;
+article.markdown-section h1 span {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--theme-color,#42b983);
 }
 
-article.markdown-section p a {
+article.markdown-section h2 a {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+article.markdown-section a {
+  color: #383838;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+article.markdown-section ul {
+  padding: 0;
+}
+
+article.markdown-section li {
+  list-style: none;
+  color: #4f4f4f;
+}
+
+article.markdown-section p {
+  color: #4f4f4f;
+}
+
+article.markdown-section li a {
   text-decoration: none;
-  border-bottom: 1px solid;
+}
+
+article.markdown-section li a:hover {
+  /* border-bottom: 1px solid; */
+  color: var(--theme-color,#42b983);
 }
 
 article.markdown-section blockquote p,
