@@ -52,9 +52,9 @@
       name: 'Yonatan',
       // repo:'https://github.com/yonatan-d',
       nameLink: "/me",
-      basePath: window.location.host === 'localhost'
-        ? 'http://localhost:5500/blog/'
-        : 'https://mirror.ghproxy.com/https://raw.githubusercontent.com/yonatan-d/yonatan-d/main/blog/',
+      basePath: window.location.hostname.includes('yonatan')
+      ? 'https://mirror.ghproxy.com/https://raw.githubusercontent.com/yonatan-d/yonatan-d/main/blog/'
+      : `http://${window.location.hostname}:5500/blog/`,
       logo: '/logo.png',
       homepage: 'posts.md',
       themeColor: '#00b38a',
