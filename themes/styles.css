@@ -138,10 +138,56 @@ nav.app-nav.no-badge {
 /******* OVERIDE DOCSIFY ELEMENTS - SIDE BAR *******/
 /***************************************************/
 
+/** 头像和昵称 **/
+.app-name-link {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  width: 120px;
+}
+
 .app-name-link img {
   max-width: 64px;
   border-radius: 5px;
+  display: block;
+  margin: 0 auto 20px;
 }
+
+.app-name-link::after {
+  content: 'Yonatan';
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 600;
+  color: #4c4c4c;
+  position: relative;
+}
+
+/** 头像和昵称 hover 动效 **/
+.app-name-link::before,
+.app-name-link::after {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.app-name-link::before {
+  content: '< >';
+  width: 140px;
+  text-align: justify;
+  text-align-last: justify;
+  position: absolute;
+  left: calc(50% - 70px);
+  top: 85px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #4c4c4c;
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.app-name-link:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+/***************************************************/
 
 .sidebar-nav hr {
   /* border-color: #7d7d7d4d; */
