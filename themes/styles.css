@@ -282,6 +282,15 @@ article.markdown-section h6 > * {
   cursor: text;
 }
 
+article.markdown-section h1 > a:hover,
+article.markdown-section h2 > a:hover,
+article.markdown-section h3 > a:hover,
+article.markdown-section h4 > a:hover,
+article.markdown-section h5 > a:hover,
+article.markdown-section h6 > a:hover {
+  text-decoration: none;
+}
+
 .anchor:hover {
   text-decoration: none;
 }
@@ -306,7 +315,7 @@ article.markdown-section h2 a {
   font-weight: bold;
 }
 
-article.markdown-section a {
+article.markdown-section ul li a {
   color: #383838;
   font-size: 15px;
   font-weight: normal;
@@ -343,6 +352,20 @@ article.markdown-section p.tip {
 article.markdown-section h1:first-of-type + p.warn {
   margin-top: 35px;
   margin-bottom: 60px;
+}
+
+/* 文章链接 */
+article.markdown-section a,
+article.markdown-section a > * {
+  color: #42b983;
+  text-decoration: none;
+}
+
+article.markdown-section a:hover{
+  color: #42b983a8;
+  text-decoration: underline;
+  text-decoration-color: #42b983a8;
+  text-decoration-thickness: 1.5px;
 }
 
 /***************************************************/
