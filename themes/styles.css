@@ -189,6 +189,11 @@ nav.app-nav.no-badge {
 }
 /***************************************************/
 
+.sidebar-nav .folder,
+.sidebar-nav .file {
+  user-select: none;
+}
+
 .sidebar-nav hr {
   /* border-color: #7d7d7d4d; */
   width: 35%;
@@ -267,6 +272,19 @@ section.content {
 /***************************************************/
 /******* OVERIDE DOCSIFY ELEMENTS - ARTICLE  *******/
 /***************************************************/
+
+article.markdown-section h1 > *,
+article.markdown-section h2 > *,
+article.markdown-section h3 > *,
+article.markdown-section h4 > *,
+article.markdown-section h5 > *,
+article.markdown-section h6 > * {
+  cursor: text;
+}
+
+.anchor:hover {
+  text-decoration: none;
+}
 
 article.markdown-section {
   /* nav 60px + footer 60px + gap 5px */
