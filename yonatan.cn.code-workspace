@@ -1,0 +1,17 @@
+{
+  "folders": [
+		{
+			"name": "theme",
+			"path": "../yonatan-d.github.io"
+		},
+		{
+			"name": "article",
+			"path": "../Yonatan-D"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "article",
+		"liveServer.settings.port": 5500,
+		"liveServer.settings.NoBrowser": true
+	}
+}
