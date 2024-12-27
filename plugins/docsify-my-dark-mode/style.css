@@ -63,6 +63,11 @@ aside {
   color: #ddd;
 }
 
+.dark .app-name-link::before,
+.dark .app-name-link::after {
+  color: #ddd;
+}
+
 /* 图标 */
 
 .dark Icon {
