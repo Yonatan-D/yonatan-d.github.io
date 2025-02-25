@@ -29,11 +29,10 @@ function plugin(hook, vm) {
       // 使用 GitHub API 获取文件提交时间
       let isGithubFilePath = /raw.githubusercontent.com/g.test(vm.route.file)
       if (isGithubFilePath) {
-        // +4 是跳过了匹配项, owner, repo, branch(sha)
-        let pathIndex = vm.route.file.split('/').findIndex(a => a == 'raw.githubusercontent.com') + 4
+        let pathIndex = vm.route.file.split('/').findIndex(i => i === 'blog')
         let filePath = isGithubFilePath ? vm.route.file.split('/').slice(pathIndex).join('/') : vm.route.file
-        let owner = vm.route.file.split('/')[pathIndex - 3]
-        let repo = vm.route.file.split('/')[pathIndex - 2]
+        let owner = 'yonatan-d'
+        let repo = 'yonatan-d'
         let date_url = `https://api.github.com/repos/${owner}/${repo}/commits?per_page=1&path=${filePath}`
         fetch(date_url)
           .then((response) => {
