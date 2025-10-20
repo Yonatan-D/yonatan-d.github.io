@@ -1,0 +1,13 @@
+{
+  "name": "yonatan-d.github.io",
+  "version": "1.0.0",
+  "description": "A blog website template created by docsify.",
+  "author": "yonatan <yonatan.lin@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "docsify serve --port=5000 --open"
+  },
+  "devDependencies": {
+    "docsify-cli": "^4.4.4"
+  }
+}
