@@ -74,14 +74,17 @@
         })
       },
       alias: {
+        '/': '/posts',
         '/.*/_navbar.md': '/_navbar.md',
-        '/posts/_sidebar.md': '/_sidebar.md',
+        '/posts': '/posts/index.md',
+        '/_sidebar.md': '/posts/_sidebar.md',
         '/notes/.*/_sidebar.md': '/notes/_sidebar.md',
+        '/notes': '/notes/index.md',
       },
       customNavbar: {
         list: [
           { title: 'Blog', href: '/posts' },
-          { title: 'Note', href: '/notes/map' },
+          { title: 'Note', href: '/notes' },
           // { title: 'Resume', href: '/resume' },
           { icon: 'icon-github-line', href: 'http://github.com/yonatan-d', target: '_blank' },
         ],
@@ -100,21 +103,6 @@
       },
       sidebarDisplayLevel: 3,
     }
-  </script>
-  <script>
-    /** 
-     * 屏蔽其他插件的控制台输出
-     * 
-     * TODO: 日志等级
-     * 0 false, 1 debug, 2 log, 3 info, 4 warn, 5 error 
-     */
-    const logLevel = 0
-    console.log = (function (oriLogFunc) {
-      return function () {
-        if (!logLevel) return;
-        oriLogFunc.apply(this, arguments)
-      }
-    })(console.log)
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4.13"></script>
