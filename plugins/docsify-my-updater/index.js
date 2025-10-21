@@ -6,6 +6,7 @@ function plugin(hook, vm) {
     if (isMatched) {
       let author = vm.config.name
       let copyright = `\n<p style="color:#808080;font-size:14px;margin-top:40px;">本文作者为 <a style="display:inline;" href="https://yonatan.cn">Yonatan</a>，转载请注明出处</p>`
+      let goBack = `> <a style="display:inline;color:#808080;" href="../">cd ..</a>`
       let gitcus = `
         <giscus-widget
           id="comments"
@@ -47,10 +48,10 @@ function plugin(hook, vm) {
       } else {
         // let text = `<p style="color:#808080;font-size:14px;">${author} · {docsify-updated} · ${wordsStr} · ${readTime}</p>`
         let text = `<p style="color:#808080;font-size:14px;">${author} · {docsify-updated} · ${readTime}</p>`
-        return content.replace(/{docsify-my-updater}/g, text) + copyright + gitcus
+        return content.replace(/{docsify-my-updater}/g, text) + copyright + goBack + gitcus
       }
 
-      return content.replace(/{docsify-my-updater}/g, '<p id="last-modified" style="color:#808080;font-size:14px;"></p>') + copyright + gitcus
+      return content.replace(/{docsify-my-updater}/g, '<p id="last-modified" style="color:#808080;font-size:14px;"></p>') + copyright + goBack + gitcus
     }
   })
 
