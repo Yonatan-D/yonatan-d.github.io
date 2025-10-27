@@ -61,6 +61,8 @@
       routerMode: 'history',
       relativePath: true,
       loadSidebar: true,
+      subMaxLevel: 3,
+      sidebarDisplayLevel: 1,
       autoHeader: true,
       // loadNavbar: true,
       // mergeNavbar: true,
@@ -78,13 +80,18 @@
         '/.*/_navbar.md': '/_navbar.md',
         '/posts': '/posts/index.md',
         '/_sidebar.md': '/posts/_sidebar.md',
-        '/notes/.*/_sidebar.md': '/notes/_sidebar.md',
-        '/notes': '/notes/index.md',
+        // '/notes/.*/_sidebar.md': '/notes/_sidebar.md',
+        '/notes': '/notes/gists',
+        '/notes/gists': '/notes/pinned/gists',
+        '/notes/snippets': '/notes/pinned/snippets',
+        '/notes/daily': '/notes/archives/daily.md',
+        '/notes/debug': '/notes/archives/debug.md',
+        '/notes/error': '/notes/archives/error.md',
       },
       customNavbar: {
         list: [
           { title: 'Blog', href: '/posts' },
-          { title: 'Note', href: '/notes' },
+          { title: 'Note', href: '/notes/gists' },
           // { title: 'Resume', href: '/resume' },
           { icon: 'icon-github-line', href: 'http://github.com/yonatan-d', target: '_blank' },
         ],
@@ -101,7 +108,7 @@
         errorText  : 'Error',
         successText: 'Copied'
       },
-      sidebarDisplayLevel: 3,
+      // sidebarDisplayLevel: 3,
     }
   </script>
   <!-- Docsify v4 -->
