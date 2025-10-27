@@ -373,7 +373,7 @@ article.markdown-section a:hover{
 /***************************************************/
 
 section.content {
-  overflow-y: overlay;
+  /* overflow-y: overlay; */
 }
 
 section::-webkit-scrollbar {
