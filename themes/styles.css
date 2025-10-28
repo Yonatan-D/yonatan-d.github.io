@@ -261,6 +261,12 @@ body.close .sidebar-toggle {
   }
 }
 
+@media screen and (max-width: 1120px) {
+  article.markdown-section {
+    max-width: 100%;
+  }
+}
+
 /***************************************************/
 /******* OVERIDE DOCSIFY ELEMENTS - SECTION  *******/
 /***************************************************/
@@ -272,6 +278,10 @@ section.content {
 /***************************************************/
 /******* OVERIDE DOCSIFY ELEMENTS - ARTICLE  *******/
 /***************************************************/
+
+article.markdown-section {
+    padding: 36px;
+}
 
 article.markdown-section h1 > *,
 article.markdown-section h2 > *,
