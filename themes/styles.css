@@ -299,8 +299,8 @@ article.markdown-section {
   /* nav 60px + footer 60px + gap 5px */
   min-height: calc(100vh - 125px);
   font-size: 14px;
-  max-width: 930px;
-  width: 95%;
+  /* max-width: 930px;
+  width: 95%; */
   letter-spacing: -.5px;
 }
 
