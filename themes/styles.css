@@ -312,6 +312,9 @@ article.markdown-section {
   /* max-width: 930px;
   width: 95%; */
   letter-spacing: -.5px;
+  white-space: normal;
+  word-break: break-all;
+  overflow: hidden;
 }
 
 article.markdown-section h1 span {
