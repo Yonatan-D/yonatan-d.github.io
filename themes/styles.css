@@ -257,7 +257,7 @@ nav.app-nav.no-badge {
   } */
 
   article.markdown-section a {
-      display: block;
+      /* display: block; */
   }
 }
 
@@ -333,6 +333,9 @@ article.markdown-section ul li a {
   color: #383838;
   font-size: 15px;
   font-weight: normal;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border .3s ease-in-out;
 }
 
 article.markdown-section ul {
@@ -350,10 +353,11 @@ article.markdown-section p {
 
 article.markdown-section li a {
   text-decoration: none;
+  line-height: normal;
 }
 
 article.markdown-section li a:hover {
-  /* border-bottom: 1px solid; */
+  border-bottom: 1px solid;
   color: var(--theme-color,#42b983);
 }
 
@@ -381,9 +385,19 @@ article.markdown-section a > * {
 
 article.markdown-section a:hover{
   color: #42b983a8;
-  text-decoration: underline;
-  text-decoration-color: #42b983a8;
-  text-decoration-thickness: 1.5px;
+}
+
+article.markdown-section p a,
+article.markdown-section p a > * {
+  color: #42b983;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border .3s ease-in-out;
+}
+
+article.markdown-section p a:hover{
+  color: #42b983a8;
+  border-bottom: 1px solid;
 }
 
 /***************************************************/
