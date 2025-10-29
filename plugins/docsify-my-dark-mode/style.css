@@ -11,9 +11,9 @@ nav,
 aside {
   background: var(--docsify_dark_mode_bg);
 }
-.sidebar-toggle {
+/* .sidebar-toggle {
   background-color: transparent !important;
-}
+} */
 
 /***********************/
 /******* 暗色主题 *******/
