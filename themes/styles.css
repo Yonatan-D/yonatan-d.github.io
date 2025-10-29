@@ -357,6 +357,7 @@ article.markdown-section blockquote p,
 article.markdown-section p.warn,
 article.markdown-section p.tip {
   font-size: 14px;
+  overflow: auto;
 }
 
 article.markdown-section h1:first-of-type + p.warn {
