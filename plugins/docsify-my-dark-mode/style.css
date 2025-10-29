@@ -157,3 +157,12 @@ p {
 .dark .sidebar-toggle {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+/* 搜索栏 */
+.dark .search {
+  border-color: rgba(125, 125, 125, .3);
+}
+.dark .search input {
+  color: #ddd;
+  background-color: #202020;
+}
