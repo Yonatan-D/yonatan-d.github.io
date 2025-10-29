@@ -11,9 +11,6 @@ nav,
 aside {
   background: var(--docsify_dark_mode_bg);
 }
-.dark .sidebar-toggle {
-  background-color: rgba(0, 0, 0, 0.8);
-}
 
 /***********************/
 /******* 暗色主题 *******/
@@ -154,4 +151,9 @@ p {
 }
 .dark::view-transition-new(root) {
   z-index: 9999;
+}
+
+/* 侧边栏 */
+.dark .sidebar-toggle {
+  background-color: rgba(0, 0, 0, 0.8);
 }
