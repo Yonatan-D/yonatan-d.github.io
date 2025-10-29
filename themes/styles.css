@@ -280,7 +280,8 @@ section.content {
 /***************************************************/
 
 article.markdown-section {
-    padding: 36px;
+    padding-left: 38px;
+    padding-right: 38px;
 }
 
 article.markdown-section h1 > *,
