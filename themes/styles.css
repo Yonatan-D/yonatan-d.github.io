@@ -418,6 +418,23 @@ pre {
   box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.2);
 } */
 
+.markdown-section pre {
+  padding: 6px 20px;
+}
+
 .markdown-section code {
   font-family: "Hack Nerd Font", "Roboto Mono", "Monaco", courier, monospace;
+}
+
+.markdown-section code::-webkit-scrollbar {
+  height: 6px;
+}
+
+.markdown-section code::-webkit-scrollbar-thumb {
+  background: #878d9781;
+  border-radius: 6px;
+}
+
+.markdown-section code::-webkit-scrollbar-thumb:hover {
+  background: #878d97a6;
 }
