@@ -339,12 +339,13 @@ article.markdown-section ul li a {
 }
 
 article.markdown-section ul {
-  padding: 0;
+  color: #666;
 }
 
-article.markdown-section ul {
+article.markdown-section ul:has(> li > a),
+article.markdown-section ul:has(> li > p > a) {
   list-style: none;
-  color: #666;
+  padding: 0;
 }
 
 article.markdown-section p {
