@@ -9,7 +9,7 @@ function plugin(hook, vm) {
     if (match) {
       const date = match[1];
       let publishedDate = `<span title=${date}>${window.$docsify.formatUpdated(date)}</span>`;
-      let author = vm.config.name;
+      // let author = vm.config.name;
       let lastModifiedDate = `<p id="last-modified" style="margin-top:40px;"></p>`;
       let copyright = `<p style="color:#808080;font-size:14px;">本文作者为 <a style="display:inline;" href="https://yonatan.cn">Yonatan</a>，转载请注明出处</p>`;
       let goBack = `<p>> <a style="color:#808080;" href="../">cd ..</a></p>`;
@@ -28,7 +28,7 @@ function plugin(hook, vm) {
         ></giscus-widget>
       `;
       let wordsCount = markdown.match(/([\u4e00-\u9fa5]+?|[a-zA-Z0-9]+)/g).length;
-      let readTime = `<span title="${wordsCount} words">${Math.ceil(wordsCount / 400)} min read</span>`;
+      let readTime = `<span title="${wordsCount} words">${Math.ceil(wordsCount / 400)} min</span>`;
 
       // 移除旧的 meta 标签
       let metaOld = document.querySelector('meta[property="og:title"]');
@@ -58,7 +58,7 @@ function plugin(hook, vm) {
           })
       }
 
-      let text = `<p style="color:#808080;font-size:14px;">${author} · ${publishedDate} · ${readTime}</p>`;
+      let text = `<p style="color:#808080;font-size:14px;">${publishedDate} · ${readTime}</p>`;
       return markdown.replace(reg, text) + lastModifiedDate + copyright + goBack + giscus;
     }
   })
