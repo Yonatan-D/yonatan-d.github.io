@@ -9,7 +9,7 @@ function style() {
 
     footer p {
       font-size: 0;
-      color: #858585;
+      color: #808080;
       max-width: 80%;
       width: 90%;
       margin: 0 auto;
@@ -18,7 +18,7 @@ function style() {
 
     footer span {
       padding: 0 10px;
-      font-size: 12px;
+      font-size: 13px;
     }
 
     footer span:first-child {
@@ -30,7 +30,7 @@ function style() {
     }
 
     footer p span a {
-      color: #858585;
+      color: #808080;
     }
   `
 
@@ -43,7 +43,7 @@ function tpl({ beian, createdAt, author }) {
   const html = `
     <p>
       <span>
-        <a href="https://beian.miit.gov.cn" target="_blank">${beian.ICP}</a> ${startDate}-PRESENT © ${author}</span>
+        <a href="https://beian.miit.gov.cn" target="_blank">${beian.ICP}</a>© ${startDate}-PRESENT • ${author} 🐰</span>
       <!-- <span>Powered by docsify@${Docsify.version}</span> -->
     </p>
   `
