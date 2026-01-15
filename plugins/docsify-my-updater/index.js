@@ -58,7 +58,7 @@ function plugin(hook, vm) {
           })
       }
 
-      let text = `<p style="color:#808080;font-size:14px;">${publishedDate} · ${readTime}</p>`;
+      let text = `${goBack} <p style="color:#808080;font-size:14px;">${publishedDate} · ${readTime}</p>`;
       return markdown.replace(reg, text) + lastModifiedDate + copyright + goBack + giscus;
     }
   })
