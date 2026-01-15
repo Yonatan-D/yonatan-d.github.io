@@ -10,10 +10,10 @@ function style() {
     footer p {
       font-size: 0;
       color: #858585;
-      max-width: 930px;
+      max-width: 80%;
       width: 90%;
       margin: 0 auto;
-      padding-left: 15px;
+      padding-left: 38px;
     }
 
     footer span {
