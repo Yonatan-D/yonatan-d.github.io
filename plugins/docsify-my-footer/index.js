@@ -11,9 +11,9 @@ function style() {
       font-size: 0;
       color: #808080;
       max-width: 80%;
-      width: 90%;
+      width: 100%;
       margin: 0 auto;
-      padding-left: 38px;
+      padding: 0 38px;
     }
 
     footer span {
@@ -31,6 +31,12 @@ function style() {
 
     footer p span a {
       color: #808080;
+    }
+
+    @media screen and (max-width: 1120px) {
+      footer p {
+        max-width: 100%;
+      }
     }
   `
 
