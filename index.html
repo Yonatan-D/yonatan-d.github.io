@@ -90,8 +90,12 @@
         '/': '/posts',
         '/.*/_navbar.md': '/_navbar.md',
         '/posts': '/posts/index.md',
-        '/_sidebar.md': '/posts/_sidebar.md',
-        // '/notes/.*/_sidebar.md': '/notes/_sidebar.md',
+        '/_sidebar.md': () => {
+          return window.location.pathname === '/notes'
+            ? '/notes/_sidebar.md'
+            : '/posts/_sidebar.md';
+        },
+        '/notes/.*/_sidebar.md': '/notes/_sidebar.md',
         '/notes': '/notes/gists',
         '/notes/gists': '/notes/pinned/gists',
         '/notes/snippets': '/notes/pinned/snippets',
@@ -102,7 +106,7 @@
       customNavbar: {
         list: [
           { title: 'Blog', href: '/posts' },
-          { title: 'Note', href: '/notes/gists' },
+          { title: 'Note', href: '/notes' },
           // { title: 'Resume', href: '/resume' },
           { icon: 'icon-github-line', href: 'http://github.com/yonatan-d', target: '_blank' },
         ],
