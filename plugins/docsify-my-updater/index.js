@@ -13,6 +13,9 @@ function plugin(hook, vm) {
       let lastModifiedDate = `<p id="last-modified" style="margin-top:40px;"></p>`;
       let copyright = `<p style="color:#808080;font-size:14px;">本文作者为 <a style="display:inline;" href="https://yonatan.cn">Yonatan</a>，转载请注明出处</p>`;
       let goBack = `<p>> <a style="color:#808080;" href="../">cd ..</a></p>`;
+      // 检测当前主题并设置对应的 giscus 主题
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      const giscusTheme = isDarkMode ? 'noborder_dark' : 'noborder_light';
       let giscus = `
         <giscus-widget
           id="comments"
@@ -23,7 +26,7 @@ function plugin(hook, vm) {
           mapping="og:title"
           strict="0"
           inputposition="top"
-          theme="noborder_light"
+          theme="${giscusTheme}"
           lang="zh-CN"
         ></giscus-widget>
       `;
@@ -59,6 +62,36 @@ function plugin(hook, vm) {
       }
 
       let text = `${goBack} <p style="color:#808080;font-size:14px;">${publishedDate} · ${readTime}</p>`;
+      
+      // 监听主题变化并更新 giscus
+      const setupGiscusThemeWatcher = () => {
+        const giscusWidget = document.querySelector('giscus-widget');
+        if (!giscusWidget) return;
+        
+        const updateGiscusTheme = () => {
+          const isDarkMode = document.documentElement.classList.contains('dark');
+          const giscusTheme = isDarkMode ? 'noborder_dark' : 'noborder_light';
+          
+          if (giscusWidget) {
+            giscusWidget.setAttribute('theme', giscusTheme);
+          }
+        };
+        
+        // 监听主题切换
+        const observer = new MutationObserver(updateGiscusTheme);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      };
+      
+      // 使用 MutationObserver 等待 giscus-widget 出现
+      const widgetObserver = new MutationObserver((mutations, obs) => {
+        if (document.querySelector('giscus-widget')) {
+          setupGiscusThemeWatcher();
+          obs.disconnect(); // 停止观察，已经找到元素
+        }
+      });
+      
+      widgetObserver.observe(document.body, { childList: true, subtree: true });
+      
       return markdown.replace(reg, text) + lastModifiedDate + copyright + goBack + giscus;
     }
   })
