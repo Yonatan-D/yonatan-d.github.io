@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/raw/:path*",
+      "destination": "https://raw.giteeusercontent.com/yonatan/yonatan-d/raw/:path*"
+    }
+  ]
+}
