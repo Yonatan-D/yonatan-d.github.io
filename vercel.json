@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/raw/:path*",
-      "destination": "https://raw.giteeusercontent.com/yonatan/yonatan-d/raw/:path*"
+      "source": "/blog/:path*",
+      "destination": "https://blog.yonatan.cn/:path*"
     }
   ]
 }
