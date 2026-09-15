@@ -56,7 +56,8 @@ function tpl({ beian, createdAt, author }) {
   const el = Docsify.dom.create('footer', html);
   const section = Docsify.dom.find('section');
 
-  Docsify.dom.toggleClass(el, 'app-footer');
+  el.classList.add('app-footer');
+  // Docsify.dom.toggleClass(el, 'app-footer');
   Docsify.dom.appendTo(section, el);
 }
 

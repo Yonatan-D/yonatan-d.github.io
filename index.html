@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Yonatan's Blog</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <!-- docsify theme -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <link rel="stylesheet" href="/themes/prism-vs.css">
-  <!-- plugins style -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@5/dist/themes/core.min.css">
+  <!-- <link rel="stylesheet" href="/themes/prism-vs.css"> -->
   <!-- font -->
-  <link href="/themes/fonts/source-code-pro.css" rel="stylesheet">
-  <!-- <link href="/themes/fonts/geist.css" rel="stylesheet"> -->
-  <!-- <link href="/themes/fonts/menlo.css" rel="stylesheet"> -->
-  <!-- <link href="/themes/fonts/HackNerd.css" rel="stylesheet"> -->
+  <!-- <link href="/assets/fonts/source-code-pro.css" rel="stylesheet"> -->
+  <!-- <link href="/assets/themes/fonts/geist.css" rel="stylesheet"> -->
+  <!-- <link href="/assets/themes/fonts/menlo.css" rel="stylesheet"> -->
+  <!-- <link href="/assets/themes/fonts/HackNerd.css" rel="stylesheet"> -->
   <!-- custom -->
-  <link rel="stylesheet" href="/themes/styles.css">
-  <link rel="stylesheet" href="/plugins/docsify-my-dark-mode/style.css">
-  <link rel="stylesheet" href="/plugins/docsify-my-markmap/style.css">
+  <link rel="stylesheet" href="/assets/icons/iconfont.css">
+  <link rel="stylesheet" href="/assets/themes/styles.css">
 
   <!-- Start Single Page Apps for GitHub Pages -->
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     // Single Page Apps for GitHub Pages
     // MIT License
     // https://github.com/rafgraph/spa-github-pages
@@ -44,73 +38,36 @@
         );
       }
     }(window.location))
-  </script>
+  </script> -->
   <!-- End Single Page Apps for GitHub Pages -->
 
 </head>
-<body>
+<body class="loading sidebar-chevron-right sidebar-group-box">
   <div id="app"></div>
-  <!-- <script src="https://cdn.bootcss.com/react/15.6.1/react.js"></script>
-  <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <script src="//unpkg.com/docsify-demo-box-react/dist/docsify-demo-box-react.min.js"></script> -->
   <script>
-    // var jsResources = '<scr' + 'ipt src="//cdn.bootcss.com/react/15.6.1/react.js"></scr' + 'ipt>\n' +
-    // '<scr' + 'ipt src="//cdn.bootcss.com/react/15.6.1/react-dom.js"></scr' + 'ipt>'
-    // var cssResources = '@import url("//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");'
-
     window.$docsify = {
       name: 'Yonatan',
-      // repo:'https://github.com/yonatan-d',
       nameLink: "/me",
+      logo: `/logo.png`,
       basePath: window.location.hostname.includes('yonatan')
       // ? 'https://raw.githubusercontent.com/yonatan-d/yonatan-d/refs/heads/main/blog/'
       ? '/blog/'
       : `http://${window.location.hostname}:5500/blog/`,
-      logo: `${window.location.protocol}//${window.location.host}/logo.png`,
-      homepage: 'posts.md',
-      themeColor: '#00b38a',
-      routerMode: 'history',
-      relativePath: true,
+      homepage: '/posts/index.md',
+      notFoundPage: '_404.md',
+      loadNavbar: true,
       loadSidebar: true,
-      subMaxLevel: 3,
-      sidebarDisplayLevel: 1,
-      autoHeader: true,
-      // loadNavbar: true,
-      // mergeNavbar: true,
-      // auto2top: true,
-      // formatUpdated: '{YYYY}-{MM}-{DD}',
-      formatUpdated: function (time) {
-        return new Date(time).toLocaleDateString("en-US", {
-          day: 'numeric',
-          month: 'short',
-          year: 'numeric',
-        })
-      },
+      subMaxLevel: 2,
+      relativePath: true,
+      routerMode: 'history',
       alias: {
-        '/': '/posts',
         '/.*/_navbar.md': '/_navbar.md',
-        '/posts': '/posts/index.md',
-        '/_sidebar.md': () => {
-          return window.location.pathname === '/notes'
-            ? '/notes/_sidebar.md'
-            : '/posts/_sidebar.md';
-        },
+        // '/_sidebar.md': () => {
+        //   return window.location.pathname === '/notes'
+        //     ? '/notes/_sidebar.md'
+        //     : '/_sidebar.md';
+        // },
         '/notes/.*/_sidebar.md': '/notes/_sidebar.md',
-        '/notes': '/notes/gists',
-        '/notes/gists': '/notes/pinned/gists',
-        '/notes/snippets': '/notes/pinned/snippets',
-        '/notes/daily': '/notes/archives/daily.md',
-        '/notes/debug': '/notes/archives/debug.md',
-        '/notes/error': '/notes/archives/error.md',
-      },
-      customNavbar: {
-        list: [
-          { title: 'Blog', href: '/posts' },
-          { title: 'Note', href: '/notes' },
-          // { title: 'Resume', href: '/resume' },
-          { icon: 'icon-github-line', href: 'http://github.com/yonatan-d', target: '_blank' },
-        ],
       },
       customFooter: {
         beian: {
@@ -124,31 +81,22 @@
         errorText  : 'Error',
         successText: 'Copied'
       },
-      // sidebarDisplayLevel: 3,
-      plugins: [
-        // DemoBoxReact.create(jsResources, cssResources)
-      ]
     }
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4.13"></script>
-  <!-- Docsify v4 Plugins -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4.13/lib/plugins/zoom-image.min.js"></script>
+  <!-- Docsify v5 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@5"></script>
+  <!-- Docsify v5 Plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@5/dist/plugins/search.min.js"></script>
+   
   <!-- custom plugins -->
-  <script src="/plugins/docsify-my-navbar/index.js"></script>
+  <!-- <script src="/plugins/docsify-my-navbar/index.js"></script> -->
   <script src="/plugins/docsify-my-footer/index.js"></script>
-  <script src="/plugins/docsify-my-dark-mode/index.js"></script>
-  <script src="/plugins/docsify-my-markmap/index.js"></script>
+  <!-- <script src="/plugins/docsify-my-dark-mode/index.js"></script> -->
+  <!-- <script src="/plugins/docsify-my-markmap/index.js"></script> -->
   <script src="/plugins/docsify-my-updater/index.js"></script>
-  <!-- third-part plugins -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
-  <!-- <script src="//cdn.jsdelivr.net/npm/docsify-terminal-block@1.0.3"></script> -->
-   <script type="module" src="https://esm.sh/giscus"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+
   <!-- prism https://cdn.jsdelivr.net/npm/prismjs@1/components/ -->
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
@@ -156,6 +104,6 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-properties.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-ini.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-toml.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-toml.min.js"></script> -->
 </body>
 </html>

@@ -1,0 +1,56 @@
+/* ----------- themeColor ----------- */
+:root {
+  --theme-color: #00b38a;
+}
+
+/* 全局字体 */
+body {
+  font-family: 'SourceCodePro Regular', "Hack Nerd Font", 'Geist Sans', 'Menlo', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ----------- iconfont ----------- */
+/* 全局图标 */
+.iconfont {
+  font-size: 20px;
+}
+
+/* 侧边栏图标 */
+aside .sidebar-nav .iconfont {
+  margin-right: 10px;
+}
+
+/* ----------- sidebar ----------- */
+/* 侧边栏分割线 */
+aside .sidebar-nav blockquote hr {
+  width: 50%;
+}
+
+/*----------- logo ----------- */
+/* 头像 */
+.app-name-link img {
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+/*----------- app-nav ----------- */
+/* 导航栏 */
+.app-nav ul {
+ display: flex;
+ align-items: center;
+ line-height: 24px;
+}
+
+/* 导航栏列表 */
+.app-nav ul li {
+  padding-left: 16px;
+}
+
+/* 导航栏列表标签 */
+.app-nav ul li a {
+  text-decoration: none;
+}
+
+/* 导航栏分割线 */
+.app-nav ul li+li {
+  border-left: 1px dotted var(--theme-color);
+}

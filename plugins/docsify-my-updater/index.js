@@ -5,10 +5,17 @@ function plugin(hook, vm) {
     // 匹配规则：{docsify-my-updater date:2025-01-08}
     const reg = /{docsify-my-updater date:(\d{4}-\d{2}-\d{2})}/g;
     const match = reg.exec(markdown);
+    const formatUpdated = (time) => {
+      return new Date(time).toLocaleDateString("en-US", {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      });
+    };
     
     if (match) {
       const date = match[1];
-      let publishedDate = `<span title=${date}>${window.$docsify.formatUpdated(date)}</span>`;
+      let publishedDate = `<span title=${date}>${formatUpdated(date)}</span>`;
       // let author = vm.config.name;
       let lastModifiedDate = `<p id="last-modified" style="margin-top:40px;"></p>`;
       let copyright = `<p style="color:#808080;font-size:14px;">本文作者为 <a style="display:inline;" href="https://yonatan.cn">Yonatan</a>，转载请注明出处</p>`;
