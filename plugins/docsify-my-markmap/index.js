@@ -5,43 +5,36 @@ function appendScript() {
   document.body.appendChild(script);
 }
 
-function replaceContent(content) {
-  const regex = /<code class="lang-markmap">([\s\S]*?)<\/code>/;
-  return content.replace(regex, (matched, optionsStr, code) => {
-    return `
-      <div class="markmap">
-        <script type="text/template">
-          ${optionsStr}
-        </script>
-      </div>
-    `
-  });
+function appendStyle() {
+  const style = document.createElement('link');
+  style.rel = 'stylesheet';
+  style.href = '/plugins/docsify-my-markmap/index.css';
+  document.head.appendChild(style);
+}
+
+function renderMarkmap() {
+  const codeBlocks = document.querySelectorAll('code.lang-markmap');
+  for (const block of codeBlocks) {
+    const parentPre = block.parentNode;
+    if (!parentPre) continue;
+    const markmapContainer = document.createElement('div');
+    markmapContainer.className = 'markmap';
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'text/template';
+    scriptTag.textContent = block.textContent.trim();
+    // debugger
+    markmapContainer.appendChild(scriptTag);
+    parentPre.parentNode.replaceChild(markmapContainer, parentPre);
+  }
 }
 
 const myMarkMapPlugin = (hook, vm) => {
+  appendStyle();
+  appendScript();
 
-  hook.init(_ => {
-    appendScript();
+  hook.doneEach(() => {
+    renderMarkmap();
   });
-
-  hook.afterEach((html, next) => {
-
-    window.markmapHTML = html;
-    next(replaceContent(html));
-
-  });
-
-  hook.doneEach(_ => {
-
-    if (!window.markmap?.autoLoader?.manual) {
-      if (document.readyState === 'loading')
-        document.addEventListener('DOMContentLoaded', () => {
-          window.markmap?.autoLoader?.renderAll();
-        });
-      else window.markmap?.autoLoader?.renderAll();
-    }
-    
-  })
 }
 
 window.$docsify.plugins = [].concat(myMarkMapPlugin, window.$docsify.plugins)

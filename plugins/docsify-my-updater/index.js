@@ -1,4 +1,5 @@
 function plugin(hook, vm) {
+  import('https://esm.sh/giscus');
 
   hook.beforeEach(function (markdown) {
     // 处理日期、作者、版权信息、返回上一级、giscus、阅读时间
