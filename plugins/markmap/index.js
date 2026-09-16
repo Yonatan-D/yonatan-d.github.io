@@ -8,7 +8,7 @@ function appendScript() {
 function appendStyle() {
   const style = document.createElement('link');
   style.rel = 'stylesheet';
-  style.href = '/plugins/docsify-my-markmap/index.css';
+  style.href = '/plugins/markmap/index.css';
   document.head.appendChild(style);
 }
 
@@ -25,6 +25,7 @@ function renderMarkmap() {
     // debugger
     markmapContainer.appendChild(scriptTag);
     parentPre.parentNode.replaceChild(markmapContainer, parentPre);
+    window.markmap?.autoLoader?.render(markmapContainer);
   }
 }
 
