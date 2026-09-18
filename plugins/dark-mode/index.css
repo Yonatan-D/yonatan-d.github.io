@@ -68,14 +68,14 @@ aside {
 
 /* 图标 */
 
-.dark Icon {
+/* .dark Icon {
   transform: translateY(-30px);
   filter: drop-shadow(#fff 0 30px);
-}
+} */
 
-.dark p {
+/* .dark p {
   overflow: hidden;
-}
+} */
 
 /* 代码块背景色 */
 .dark pre,
@@ -127,9 +127,9 @@ aside {
   margin: 0 1rem;
 }
 
-p {
+/* p {
   color: var(--text_color);
-}
+} */
 
 /***********************/
 /******* 过渡动画 *******/
@@ -154,9 +154,9 @@ p {
 }
 
 /* 侧边栏 */
-.dark .sidebar-toggle {
+/* .dark .sidebar-toggle {
   background-color: rgba(0, 0, 0, 0.8);
-}
+} */
 
 /* 搜索栏 */
 .dark .search {
