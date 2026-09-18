@@ -1,88 +1,32 @@
-function style() {
-  const code = `
-    footer {
-      width: 100%;
-      height: 60px;
-      display: flex;
-      align-items: center;
-    }
+{  
+  const { loadStyle } = window.__PLUGIN_UTILS__ || {};
 
-    footer p {
-      font-size: 0;
-      color: #808080;
-      max-width: 80%;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 38px;
-    }
+  function customFooterPlugin(hook, vm) {
+    loadStyle('/plugins/footer/index.css');
 
-    footer span {
-      padding: 0 10px;
-      font-size: 13px;
-    }
+    const defaultConfig = {
+      beian: {
+        ICP: "",
+      },
+      createdAt: new Date().getFullYear(),
+      author: ''
+    };
+    const config = { ...defaultConfig, ...vm.config.customFooter };
 
-    footer span:first-child {
-      padding-left: 0;
-    }
+    hook.afterEach((html) => {
+      const { beian, createdAt, author } = config;
 
-    footer span:not(:last-child) {
-      border-right: 1px solid;
-    }
-
-    footer p span a {
-      color: #808080;
-    }
-
-    @media screen and (max-width: 1120px) {
-      footer p {
-        max-width: 100%;
-      }
-    }
-  `
-
-  Docsify.dom.style(code);
-}
-
-function tpl({ beian, createdAt, author }) {
-  const startDate = new Date(createdAt).getFullYear();
-
-  const html = `
-    <p>
-      <span>
-        <a href="https://beian.miit.gov.cn" target="_blank">${beian.ICP}</a>© ${startDate}-PRESENT • ${author} 🐰</span>
-      <!-- <span>Powered by docsify@${Docsify.version}</span> -->
-    </p>
-  `
-  const el = Docsify.dom.create('footer', html);
-  const section = Docsify.dom.find('section');
-
-  el.classList.add('app-footer');
-  // Docsify.dom.toggleClass(el, 'app-footer');
-  Docsify.dom.appendTo(section, el);
-}
-
-function init(opts, vm) {
-
-  const defaultConfig = {
-    beian: {
-      ICP: "",
-    },
-    createdAt: new Date(),
-    author: ''
+      return html + `
+        <footer>
+          <p>
+            <span><a href="https://beian.miit.gov.cn" target="_blank">${beian.ICP}</a> © ${createdAt}-PRESENT • ${author}</span>
+            <span>Powered by docsify@${Docsify.version}</span>
+          </p>
+        </footer>
+      `;
+    });
   }
 
-  const footer = { ...defaultConfig, ...vm.config.customFooter };
-  
-  style();
-  tpl(footer);
+  window.$docsify = window.$docsify || {};
+  $docsify.plugins = [...($docsify.plugins || []), customFooterPlugin];
 }
-
-var install = function (hook, vm) {
-  const opts = vm.config.customFooter || [];
-
-  hook.mounted(_ => {
-    init(opts, vm);
-  })
-}
-
-$docsify.plugins = [].concat(install, $docsify.plugins);

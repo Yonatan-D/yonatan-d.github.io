@@ -1,0 +1,130 @@
+.react-demo-box {
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  background: #f6f8fa;
+  overflow: hidden;
+}
+.react-demo-box .preview {
+  padding: 20px;
+  background: #fff;
+  min-height: 60px;
+}
+.react-demo-box .desc {
+  position: relative;
+  padding: 10px 20px;
+  background: #fff;
+  border-top: 1px solid #e1e4e8;
+  border-bottom: 1px solid #e1e4e8;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.react-demo-box .desc .demo-box-title {
+  position: absolute;
+  top: -12px;
+  margin-left: 16px;
+  padding: 1px 8px;
+  background: #fff;
+  color: #42b983;
+  font-weight: bold;
+}
+.react-demo-box .desc p:last-child {
+  margin-bottom: 0;
+}
+.react-demo-box .source-toggle {
+  background: #f6f8fa;
+  padding: 6px 16px;
+  border: none;
+  border-bottom: 1px solid #e1e4e8;
+  width: 100%;
+  text-align: left;
+  font-size: 13px;
+  color: #586069;
+  cursor: pointer;
+  outline: none;
+}
+.react-demo-box .source-toggle:hover {
+  background: #eaeef2;
+}
+.react-demo-box .source-toggle .arrow {
+  display: inline-block;
+  margin-right: 6px;
+  transition: transform 0.2s;
+}
+.react-demo-box .source-toggle .arrow.open {
+  transform: rotate(90deg);
+}
+.react-demo-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  color: #586069;
+  font-size: 14px;
+}
+.react-demo-loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #e1e4e8;
+  border-top-color: var(--theme-color);
+  border-radius: 50%;
+  animation: react-demo-spin 1s linear infinite;
+  margin-right: 10px;
+}
+@keyframes react-demo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.react-demo-error {
+  color: #d73a49;
+  background: #ffeef0;
+  padding: 16px;
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Dark mode styles */
+.dark .react-demo-box {
+  background: rgba(30, 30, 30, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.dark .react-demo-box .preview {
+  background: rgba(0, 0, 0, 0.4);
+  color: #e4e4e4;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.dark .react-demo-box .desc {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #d4d4d4;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.dark .react-demo-box .desc .demo-box-title {
+  background: rgba(255, 255, 255, 0.05);
+  color: #42b983;
+}
+.dark .react-demo-box .source-toggle {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #d4d4d4;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+.dark .react-demo-box .source-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+@supports not (backdrop-filter: blur(12px)) {
+  .dark .react-demo-box {
+    background: #1e1e1e; /* 降级为纯色 */
+  }
+}
