@@ -1,110 +1,81 @@
 {
-  const { loadStyle } = window.__PLUGIN_UTILS__ || {};
-
+  /**
+   * 浅深主题切换插件
+   * @param {Object} config - 配置项 { light: ['css_url1'], dark: ['css_url2'] }
+   */
   function darkModePlugin(hook, vm) {
-    loadStyle('/plugins/dark-mode/index.css');
+    const STORAGE_KEY = 'DOCSIFY_DARK_MODE';
 
-    const setColor = ({ background, toggleBtnBg, textColor }) => {
-      document.documentElement.style.setProperty(
-        '--docsify_dark_mode_bg',
-        background
-      )
-      document.documentElement.style.setProperty(
-        '--docsify_dark_mode_btn',
-        toggleBtnBg
-      )
-      document.documentElement.style.setProperty('--text_color', textColor)
-    }
-    const setClass = (isDark) => {
-      const html = document.querySelector('html');
-      if (isDark) {
-        html.classList.add('dark');
-      } else {
-        html.classList.remove('dark');
-      }
-    }
-    const setMode = (isDark) => {
-      if (isDark) {
-        setColor(config.dark)
-        setClass(true)
-        localStorage.setItem('DOCSIFY_DARK_MODE', 'dark')
-        currColor = 'dark'
-      } else {
-        setColor(config.light)
-        setClass(false)
-        localStorage.setItem('DOCSIFY_DARK_MODE', 'light')
-        currColor = 'light'
-      }
-    }
-    const toggle = (event) => {
-      let isDark = (localStorage.getItem('DOCSIFY_DARK_MODE') === 'dark');
-      if (!isAppearanceTransition) {
-        setMode(isDark = !isDark);
-        return
-      }
+    hook.init(() => {
+      const config = vm.config.darkMode || { light: [], dark: [] };
+      const currentMode = localStorage.getItem(STORAGE_KEY) || 'light';
 
-      // add appearance transition
-      var x, y;
-      x = event.clientX
-      y = event.clientY
-      const endRadius = Math.hypot(
-        Math.max(x, innerWidth - x),
-        Math.max(y, innerHeight - y),
-      )
+      const styles = config[currentMode] || [];
+      styles.forEach((href, index) => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.dataset.themeMode = currentMode;
+        link.dataset.themeIndex = index;
+        document.head.appendChild(link);
+      });
+    });
 
-      const transition = document.startViewTransition(() => {
-        setMode(isDark = !isDark);
-      })
-      transition.ready.then(() => {
-        const clipPath = [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`,
-        ]
-        document.documentElement.animate(
-          {
-            clipPath: isDark ? clipPath : [...clipPath].reverse(),
-          },
-          {
-            duration: 400,
-            easing: 'ease-in',
-            pseudoElement: isDark ? '::view-transition-new(root)' : '::view-transition-old(root)',
-          },
-        )
-      })
-    }
-    const isAppearanceTransition = document.startViewTransition &&
-      !window.matchMedia(`(prefers-reduced-motion: reduce)`).matches;
-
-    const defaultConfig = {
-      dark: {
-        background: "#050505",
-        toggleBtnBg: "#34495e",
-        textColor: "white"
-      },
-      light: {
-        background: "white",
-        toggleBtnBg: "var(--theme-color)",
-        textColor: "var(--theme-color)"
-      }
-    };
-    const config = { ...defaultConfig, ...vm.config.customDarkMode };
-
-    hook.doneEach(_ => {
-      if (localStorage.getItem('DOCSIFY_DARK_MODE')) {
-        let currColor = localStorage.getItem('DOCSIFY_DARK_MODE');
-        let isDark = (currColor === 'dark');
-        setMode(isDark);
-      } else {
-        setMode(false);
-      }
-
-      var checkbox = document.querySelector('input[name=mode]')
+    hook.doneEach(() => {
       
-      if (!checkbox) {
-        return
-      }
+      // if (document.getElementById('dark-mode')) return;
 
-      checkbox.addEventListener('click', toggle)
+      const navUl = document.querySelector('.app-nav ul');
+      if (!navUl) return;
+
+      const li = document.createElement('li');
+      const label = document.createElement('label');
+      label.innerHTML = `
+        <input id="dark-mode" class="toggle" type="checkbox">
+      `;
+      li.appendChild(label);
+      navUl.appendChild(li);
+
+      const checkbox = document.getElementById('dark-mode');
+      const currentMode = localStorage.getItem(STORAGE_KEY) || 'light';
+      checkbox.checked = currentMode === 'dark';
+
+      checkbox.addEventListener('change', function (e) {
+        const newMode = e.target.checked ? 'dark' : 'light';
+        localStorage.setItem(STORAGE_KEY, newMode);
+        applyTheme(newMode);
+      });
+    });
+  }
+
+  /**
+   * 执行主题样式的启用与禁用
+   * @param {string} mode - 'light' 或 'dark'
+   */
+  function applyTheme(mode) {
+    const config = window.$docsify.darkMode || { light: [], dark: [] };
+    const targetStyles = config[mode] || [];
+    const oppositeMode = mode === 'light' ? 'dark' : 'light';
+
+    document.querySelectorAll(`link[data-theme-mode="${oppositeMode}"]`).forEach((link) => {
+      link.disabled = true;
+    });
+
+    targetStyles.forEach((href, index) => {
+      let link = document.querySelector(
+        `link[data-theme-mode="${mode}"][data-theme-index="${index}"]`
+      );
+
+      if (link) {
+        link.disabled = false;
+      } else {
+        link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.dataset.themeMode = mode;
+        link.dataset.themeIndex = index;
+        document.head.appendChild(link);
+      }
     });
   }
 

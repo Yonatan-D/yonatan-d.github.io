@@ -6,6 +6,11 @@
 
   <!-- Theme -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@5/dist/themes/core.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@5/dist/themes/addons/core-dark.min.css" disabled />
+  <link
+    rel="stylesheet"
+    href="//cdn.jsdelivr.net/npm/prism-themes@1/themes/prism-one-light.min.css"
+  />
   <!-- <link rel="stylesheet" href="/themes/prism-vs.css"> -->
   <!-- font -->
   <!-- <link href="/assets/fonts/source-code-pro.css" rel="stylesheet"> -->
@@ -93,6 +98,15 @@
         errorText  : '<div style="color: white;">Error!</div>',
         successText: '<div style="color: white;">Copied!</div>'
       },
+      darkMode: {
+        light: [
+          '//cdn.jsdelivr.net/npm/prism-themes@1/themes/prism-one-light.min.css',
+        ],
+        dark: [
+          '//cdn.jsdelivr.net/npm/prism-themes@1/themes/prism-one-dark.min.css',
+          '//cdn.jsdelivr.net/npm/docsify@5/dist/themes/addons/core-dark.min.css'
+        ]
+      },
     }
   </script>
   <!-- Docsify v5 -->
@@ -110,8 +124,7 @@
   <script src="/plugins/markmap/index.js"></script>
   <script src="/plugins/demo-box-react/index.js"></script>
   <script src="/plugins/updater/index.js"></script>
-
-  <!-- prism https://cdn.jsdelivr.net/npm/prismjs@1/components/ -->
+  <!-- prism -->
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
