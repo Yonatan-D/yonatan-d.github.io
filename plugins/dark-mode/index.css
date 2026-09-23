@@ -1,0 +1,12 @@
+input#dark-mode:where([type=checkbox],[type=radio]):before {
+  background-color: #ffb703;
+  box-shadow: 0 0 8px #ffb703; /* 太阳的外发光 */
+}
+
+input#dark-mode:checked:before {
+  background-color: transparent;
+  border-color: var(--color-bg);
+  /* 利用 inset 内阴影，在左侧形成月牙形状，完美替代外圈 */
+  box-shadow: inset -6px -2px 0 0 #ddd, 
+              0 0 4px rgba(255, 255, 255, 0.3); /* 月亮微弱的泛光 */
+}

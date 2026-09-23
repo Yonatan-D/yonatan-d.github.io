@@ -1,9 +1,13 @@
 {
+  const { loadStyle } = window.__PLUGIN_UTILS__ || {};
+
   /**
    * 浅深主题切换插件
    * @param {Object} config - 配置项 { light: ['css_url1'], dark: ['css_url2'] }
    */
   function darkModePlugin(hook, vm) {
+    loadStyle('/plugins/dark-mode/index.css');
+    
     const STORAGE_KEY = 'DOCSIFY_DARK_MODE';
 
     hook.init(() => {
