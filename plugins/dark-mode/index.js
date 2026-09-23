@@ -101,6 +101,13 @@
   function switchTheme(mode) {
     const isDark = mode === 'dark';
 
+    // 移动端 / 触屏设备直接切换，不做 View Transition 动画
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    if (isTouch) {
+      applyTheme(mode);
+      return;
+    }
+
     const canTransition =
       typeof document.startViewTransition === 'function' &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
