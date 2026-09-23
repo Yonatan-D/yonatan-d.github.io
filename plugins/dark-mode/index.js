@@ -49,13 +49,13 @@
         mix-blend-mode: normal;
       }
 
-      /* 切到暗色：新快照（暗色）在上层，从光标处扩散 */
-      html.vt-to-dark::view-transition-new(root) { z-index: 2; }
-      html.vt-to-dark::view-transition-old(root) { z-index: 1; }
+      /* 切到暗色：新快照（暗色）在上层，从光标处收缩 */
+      html.vt-to-dark::view-transition-old(root) { z-index: 2; }
+      html.vt-to-dark::view-transition-new(root) { z-index: 1; }
 
-      /* 切到亮色：旧快照（暗色）在上层，向光标处收缩 */
-      html.vt-to-light::view-transition-old(root) { z-index: 2; }
-      html.vt-to-light::view-transition-new(root) { z-index: 1; }
+      /* 切到亮色：旧快照（暗色）在上层，向光标处扩散 */
+      html.vt-to-light::view-transition-new(root) { z-index: 2; }
+      html.vt-to-light::view-transition-old(root) { z-index: 1; }
     `;
     document.head.appendChild(style);
   }
@@ -146,14 +146,14 @@
 
         const animation = root.animate(
           {
-            clipPath: isDark ? clipPath : [...clipPath].reverse(),
+            clipPath: isDark ? [...clipPath].reverse() : clipPath,
           },
           {
             duration: TRANSITION_DURATION,
             easing: 'ease-in',
             pseudoElement: isDark
-              ? '::view-transition-new(root)'
-              : '::view-transition-old(root)',
+              ? '::view-transition-old(root)'
+              : '::view-transition-new(root)',
           }
         );
 
