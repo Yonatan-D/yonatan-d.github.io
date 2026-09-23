@@ -5,7 +5,7 @@
     let themeObserver = null;
     let widgetObserver = null;
 
-    const isDarkMode = document.documentElement.classList.contains('dark');
+    const isDarkMode = localStorage.getItem('DOCSIFY_DARK_MODE') === 'dark';
     const giscusTheme = isDarkMode ? 'noborder_dark' : 'noborder_light';
 
     const giscusHtml = `
@@ -28,8 +28,8 @@
       if (!giscusWidget) return;
       
       const updateGiscusTheme = () => {
-        const isDark = document.documentElement.classList.contains('dark');
-        giscusWidget.setAttribute('theme', isDark ? 'noborder_dark' : 'noborder_light');
+        const isDarkMode = localStorage.getItem('DOCSIFY_DARK_MODE') === 'dark';
+        giscusWidget.setAttribute('theme', isDarkMode ? 'noborder_dark' : 'noborder_light');
       };
 
       if (themeObserver) themeObserver.disconnect();
