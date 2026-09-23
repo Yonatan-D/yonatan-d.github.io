@@ -22,42 +22,17 @@
     });
 
     hook.doneEach(() => {
-      const nav = document.querySelector('.app-nav');
-      if (!nav) return;
+      const checkbox = document.getElementById('dark-mode');
+      if (!checkbox) return;
 
-      const injectButton = (navUl) => {
-        const li = document.createElement('li');
-        const label = document.createElement('label');
-        label.innerHTML = `
-          <input id="dark-mode" class="toggle" type="checkbox">
-        `;
-        li.appendChild(label);
-        navUl.appendChild(li);
-  
-        const checkbox = document.getElementById('dark-mode');
-        const currentMode = localStorage.getItem(STORAGE_KEY) || 'light';
-        checkbox.checked = currentMode === 'dark';
-  
-        checkbox.addEventListener('change', function (e) {
-          const newMode = e.target.checked ? 'dark' : 'light';
-          localStorage.setItem(STORAGE_KEY, newMode);
-          applyTheme(newMode);
-        });
-      };
+      const currentMode = localStorage.getItem(STORAGE_KEY) || 'light';
+      checkbox.checked = currentMode === 'dark';
 
-      const tryInject = () => {
-        const navUl = document.querySelector('.app-nav ul');
-        if (!navUl || navUl.querySelector('#dark-mode')) return;
-        injectButton(navUl);
-        return true;
-      };
-
-      if (!tryInject()) {
-        const observer = new MutationObserver(() => {
-          if (tryInject()) observer.disconnect();
-        });
-        observer.observe(nav, { childList: true, subtree: true });
-      }
+      checkbox.addEventListener('change', function (e) {
+        const newMode = e.target.checked ? 'dark' : 'light';
+        localStorage.setItem(STORAGE_KEY, newMode);
+        applyTheme(newMode);
+      });
     });
   }
 

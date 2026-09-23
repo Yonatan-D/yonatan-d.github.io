@@ -48,6 +48,14 @@
 
 </head>
 <body class="loading sidebar-chevron-right sidebar-group-box">
+  <nav class="app-nav">
+    <ul>
+      <li><a href="/">Blog</a></li>
+      <li><a href="/notes/command">Note</a></li>
+      <li><a href="https://github.com/yonatan-d"><i class="iconfont icon-github"></i></a></li>
+      <li><label><input id="dark-mode" class="toggle" type="checkbox" /></label></li>
+    </ul>
+  </nav>
   <div id="app"></div>
   <script>
     window.$docsify = {
@@ -60,7 +68,6 @@
       : `http://${window.location.hostname}:5500/blog/`,
       homepage: '/posts/index.md',
       notFoundPage: '_404.md',
-      loadNavbar: true,
       loadSidebar: true,
       subMaxLevel: 2,
       relativePath: true,
@@ -103,8 +110,8 @@
           '//cdn.jsdelivr.net/npm/prism-themes@1/themes/prism-one-light.min.css',
         ],
         dark: [
+          '//cdn.jsdelivr.net/npm/docsify@5/dist/themes/addons/core-dark.min.css',
           '//cdn.jsdelivr.net/npm/prism-themes@1/themes/prism-one-dark.min.css',
-          '//cdn.jsdelivr.net/npm/docsify@5/dist/themes/addons/core-dark.min.css'
         ]
       },
     }
