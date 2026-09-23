@@ -68,6 +68,8 @@
     const config = getConfig();
     const targetStyles = config[mode] || [];
     const oppositeMode = mode === 'light' ? 'dark' : 'light';
+    document.body.classList.add(mode);
+    document.body.classList.remove(oppositeMode);
 
     document
       .querySelectorAll(`link[data-theme-mode="${oppositeMode}"]`)
