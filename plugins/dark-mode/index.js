@@ -2,7 +2,7 @@
   const { loadStyle } = window.__PLUGIN_UTILS__ || {};
 
   const STORAGE_KEY = 'DOCSIFY_DARK_MODE';
-  const TRANSITION_DURATION = 400;
+  const TRANSITION_DURATION = 520;
   const DEFAULT_CONFIG = { light: [], dark: [] };
 
   /** 最近一次指针位置，作为圆形扩散的圆心 */
@@ -150,7 +150,7 @@
           },
           {
             duration: TRANSITION_DURATION,
-            easing: 'ease-in',
+            easing: 'cubic-bezier(0.33, 0, 0.2, 1)',
             pseudoElement: isDark
               ? '::view-transition-old(root)'
               : '::view-transition-new(root)',

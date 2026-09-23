@@ -22,4 +22,7 @@ input#dark-mode:checked:before {
 ::view-transition-new(theme-toggle) {
   animation: none;
   mix-blend-mode: normal;
+  will-change: clip-path;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
