@@ -10,3 +10,16 @@ input#dark-mode:checked:before {
   box-shadow: inset -6px -2px 0 0 #ddd, 
               0 0 4px rgba(255, 255, 255, 0.3); /* 月亮微弱的泛光 */
 }
+
+/* 让切换按钮脱离根快照，避免被圆形裁剪"冻住" */
+#dark-mode,
+#dark-mode + .slider {
+  view-transition-name: theme-toggle;
+}
+
+/* 按钮自身不做淡入淡出，直接显示新状态 */
+::view-transition-old(theme-toggle),
+::view-transition-new(theme-toggle) {
+  animation: none;
+  mix-blend-mode: normal;
+}
