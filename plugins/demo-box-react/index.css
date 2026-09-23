@@ -31,6 +31,10 @@
 .react-demo-box .desc p:last-child {
   margin-bottom: 0;
 }
+.react-demo-box .source-code {
+  margin: 0 20px;
+  overflow-x: auto;
+}
 .react-demo-box .source-toggle {
   background: #f6f8fa;
   padding: 6px 16px;
