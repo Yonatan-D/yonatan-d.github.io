@@ -49,3 +49,8 @@ aside .sidebar-nav blockquote hr {
 .app-nav ul li+li {
   border-left: 1px dotted var(--theme-color);
 }
+
+/* --------- 超长字符换行 --------- */
+body {
+  overflow-wrap: break-word;
+}
