@@ -1,0 +1,5 @@
+/* Tabs */
+:root {
+  --docsifytabs-tab-background: var(--color-mono-3);
+  --docsifytabs-border-color: var(--color-mono-5);
+}
