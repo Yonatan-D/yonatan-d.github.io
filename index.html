@@ -61,7 +61,7 @@
       // ? 'https://raw.githubusercontent.com/yonatan-d/yonatan-d/refs/heads/main/blog/'
       ? '/blog/'
       : `http://${window.location.hostname}:5500/blog/`,
-      homepage: '/posts/index.md',
+      homepage: '/posts/README.md',
       notFoundPage: '_404.md',
       loadSidebar: true,
       subMaxLevel: 2,
@@ -75,6 +75,7 @@
         //     : '/_sidebar.md';
         // },
         '/notes/.*/_sidebar.md': '/notes/_sidebar.md',
+        '/posts/_sidebar.md': '/_sidebar.md',
       },
       auto2top: true,
       customFooter: {
