@@ -13,7 +13,7 @@
   const COLLAPSED_SIZE = 28;
   const PANEL_GAP = 16;
   const MIN_LEFT = 8;
-  const FIXED_TOP = 20;
+  const FIXED_TOP = 22;
 
   const escapeHtml = (text) => {
     const el = document.createElement('div');
