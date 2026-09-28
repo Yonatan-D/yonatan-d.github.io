@@ -34,7 +34,7 @@
       
       // 1. 设置 CSS 变量（作为备用）
       const fontSizeMap = { small: '12px', standard: '16px', large: '20px' };
-      const widthMap = { standard: '800px', wide: '90%' };
+      const widthMap = { standard: '800px', wide: 'calc(100% - 160px)' };
       root.style.setProperty('--base-font-size', fontSizeMap[state.textSize]);
       root.style.setProperty('--content-max-width', widthMap[state.width]);
 
@@ -48,12 +48,31 @@
       
       // 针对 Docsify 的内容容器强制设置字体和宽度
       dynamicStyle.innerHTML = `
-        .markdown-section {
+        /* 仅针对正文段落、列表、表格、引用，不包含 h1 标题 */
+        .markdown-section h2,
+        .markdown-section h3,
+        .markdown-section h4,
+        .markdown-section h5,
+        .markdown-section h6,
+        .markdown-section p,
+        .markdown-section li,
+        .markdown-section td,
+        .markdown-section th,
+        .markdown-section blockquote {
+          font-size: ${fontSizeMap[state.textSize]} !important;
+        }
+        /* 显式控制代码块和行内代码的字体大小 */
+        .markdown-section pre,
+        .markdown-section code {
           font-size: ${fontSizeMap[state.textSize]} !important;
         }
         .content {
           max-width: ${widthMap[state.width]} !important;
           margin: 0 auto !important;
+        }
+        /* 强制修复 h2 的 margin-bottom，避免 calc 导致的重叠 */
+        .markdown-section h2 {
+          margin-bottom: 1.5rem !important;
         }
       `;
 
